@@ -156,9 +156,10 @@ public class Tela extends javax.swing.JFrame {
             dadosProf = new SortDepart().bubbleSort(dadosProf);
         if(this.jCheckBox5.isSelected())
             dadosProf = new SortHorst().bubbleSort(dadosProf);
+        
         DefaultTableModel model = (DefaultTableModel) grid_Dados.getModel();
         Iterator<Professor> it = dadosProf.iterator();
-        for(int i = 0; i < model.getRowCount();i++){
+        for(int i = 1; i <= model.getRowCount();i++){
             model.removeRow(i);
         }
         int i = 0;
