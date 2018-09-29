@@ -7,12 +7,11 @@ import javax.swing.table.DefaultTableModel;
 
 public class Tela extends javax.swing.JFrame {
     
-    List<Professor> dadosProf;
+    PersistenciaLista dados;
 
     public Tela() {
         initComponents();
-        PersistenciaLista dados = new PersistenciaLista();
-        dadosProf = dados.getLista();
+        dados = new PersistenciaLista();
         DefaultTableModel model = (DefaultTableModel) grid_Dados.getModel();
         Iterator<Professor> it = dados.getDados();
         //List<Professor> teste = new SortDepart().bubbleSort(dados.getLista());
@@ -146,6 +145,8 @@ public class Tela extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        List<Professor> dadosProf = dados.getLista();
+        
         if(this.jCheckBox1.isSelected())
             dadosProf = new SortNome().bubbleSort(dadosProf);
         if(this.jCheckBox2.isSelected())
@@ -159,7 +160,8 @@ public class Tela extends javax.swing.JFrame {
         
         DefaultTableModel model = (DefaultTableModel) grid_Dados.getModel();
         Iterator<Professor> it = dadosProf.iterator();
-        for(int i = 1; i <= model.getRowCount();i++){
+        for(int i = 0; i < model.getRowCount();i++){
+            System.out.println(i);
             model.removeRow(i);
         }
         int i = 0;
